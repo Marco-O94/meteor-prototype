@@ -1,0 +1,71 @@
+<head>
+  <title>prototype-1</title>
+</head>
+
+<body>
+  <div class="container-fluid d-flex justify-content-center">
+    <h1>Interactive Blog</h1>
+  </div>
+  {{> inputs}}
+  <hr class="my-4 container">
+  {{> postGrid}}
+</body>
+
+<template name="inputs">
+  <div class="mt-2 container">
+    <form class="new-post">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div>
+            <label for="postTitle" class="form-label">Post Title</label>
+            <input type="text" class="form-control" id="postTitle" name="postTitle" placeholder="My first post">
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div>
+            <label for="postSubtitle" class="form-label">Post Subtitle</label>
+            <input type="text" class="form-control" id="postSubtitle" name="postSubtitle"
+              placeholder="This is my fantastic post!">
+          </div>
+        </div>
+        <div class="col-12 col-md-12 mt-4">
+          <div>
+            <label for="postDescription" class="form-label">Post Description</label>
+            <textarea class="form-control" id="postDescription" name="postDescription" rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary w-100">
+            Create a new post
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</template>
+
+<template name="postGrid">
+  <div class="container mt-5">
+    <div class="row gy-3">
+      {{#each posts}}
+      {{> postItem}}
+      {{/each}}
+    </div>
+  </div>
+</template>
+
+<template name="postItem">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{subtitle}}</h6>
+        <p class="card-text">{{description}}</p>
+        <button class="btn btn-danger delete">Cancella</button>
+        <button class="btn btn-secondary private">Make private</button>
+      </div>
+    </div>
+  </div>
+</template>
